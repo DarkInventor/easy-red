@@ -582,6 +582,7 @@ export default function Component() {
                       <Switch id="yoyo" checked={yoyo} onCheckedChange={setYoyo} />
                       <Label htmlFor="yoyo">Yoyo Effect</Label>
                     </div>
+                    <Image src="bounce-animation.svg" width="100" height="100" alt={''} />
                   </div>
                 </AccordionContent>
               </AccordionItem>
