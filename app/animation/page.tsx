@@ -455,7 +455,7 @@ export default function Component() {
         <div className="flex-1 flex items-center justify-center p-8 bg-gray-50">
           <div className="aspect-square w-full max-w-2xl bg-white flex items-center justify-center rounded-lg overflow-hidden shadow-lg" style={{ backgroundColor }}>
             <AnimatePresence>
-              {isPlaying && layers.map((layer, index) => (
+              {layers.map((layer, index) => (
                 <motion.div
                   key={index}
                 //   @ts-ignore
@@ -518,16 +518,26 @@ export default function Component() {
                 className="hidden"
                 accept=".svg,.png"
               />
-              {layers.map((layer, index) => (
-                <div key={index} className={`flex items-center justify-between p-2 rounded ${selectedLayer === index ? 'bg-blue-100' : 'bg-white'}`}>
-                  <div className="flex items-center">
-                    {layer.type === 'image' ? <ImageIcon className="mr-2 h-4 w-4" /> : <Type className="mr-2 h-4 w-4" />}
-                    <span className="truncate w-40">{layer.type === 'text' ? layer.content : `Image ${index + 1}`}</span>
+   
+                {layers.map((layer, index) => (
+                  <div key={index} className={`flex items-center justify-between p-2 rounded ${selectedLayer === index ? 'bg-blue-100' : 'bg-white'}`}>
+                    <div className="flex items-center">
+                      {layer.type === 'image' ? (
+                        <>
+                          <ImageIcon className="mr-2 h-4 w-4" />
+                          <img src={layer.content} alt={`Preview ${index + 1}`} className="w-16 h-16 object-cover rounded" />
+                        </>
+                      ) : (
+                        <>
+                          <Type className="mr-2 h-4 w-4" />
+                          <span className="truncate w-40">{layer.content}</span>
+                        </>
+                      )}
+                    </div>
+                    <Button variant="ghost" size="sm" onClick={() => removeLayer(index)}>Remove</Button>
                   </div>
-                  <Button variant="ghost" size="sm" onClick={() => removeLayer(index)}>Remove</Button>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
           </TabsContent>
           <TabsContent value="animation">
             <Accordion type="single" collapsible className="w-full">
