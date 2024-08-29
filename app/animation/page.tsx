@@ -10,7 +10,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileUp, Play, Pause, RotateCw, Download, Layers, Type, Image as ImageIcon } from 'lucide-react';
+import { FileUp, Play, Pause, RotateCw, Download, Layers, Type, Image as ImageIcon, BadgeIcon } from 'lucide-react';
 import Image from 'next/image';
 
 type AnimationVariant = keyof typeof animationVariants;
@@ -442,7 +442,11 @@ export default function Component() {
               <RotateCw className="mr-2 h-4 w-4" /> Restart
             </Button>
             <Button onClick={handleExport} disabled={layers.length === 0} variant="outline">
-              <Download className="mr-2 h-4 w-4" /> Export
+             
+              <Download className="mr-2 h-4 w-4 " /> Export
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 ml-1">
+                Beta
+              </span>
             </Button>
           </div>
         </header>
